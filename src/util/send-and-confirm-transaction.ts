@@ -32,18 +32,18 @@ export async function sendAndConfirmTransaction(
     sendOptions,
   );
 
-  const status = (
-    await connection.confirmTransaction(
-      signature,
-      options && options.commitment,
-    )
-  ).value;
+  // const status = (
+  //   await connection.confirmTransaction(
+  //     signature,
+  //     options && options.commitment,
+  //   )
+  // ).value;
 
-  if (status.err) {
-    throw new Error(
-      `Transaction ${signature} failed (${JSON.stringify(status)})`,
-    );
-  }
+  // if (status.err) {
+  //   throw new Error(
+  //     `Transaction ${signature} failed (${JSON.stringify(status)})`,
+  //   );
+  // }
 
   return signature;
 }
