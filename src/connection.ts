@@ -815,6 +815,7 @@ function createRpcClient(
         callback(new Error(`${res.status} ${res.statusText}: ${text}`));
       }
     } catch (err) {
+      // @ts-ignore
       callback(err);
     } finally {
       agentManager && agentManager.requestEnd();
@@ -3259,7 +3260,9 @@ export class Connection {
           options.until =
             block.signatures[block.signatures.length - 1].toString();
         }
+        
       } catch (err) {
+        // @ts-ignore
         if (err.message.includes('skipped')) {
           continue;
         } else {
@@ -3282,6 +3285,7 @@ export class Connection {
             block.signatures[block.signatures.length - 1].toString();
         }
       } catch (err) {
+        // @ts-ignore
         if (err.message.includes('skipped')) {
           continue;
         } else {
@@ -3732,6 +3736,7 @@ export class Connection {
           // eslint-disable-next-line require-atomic-updates
           sub.subscriptionId = null;
         }
+        // @ts-ignore
         console.error(`${rpcMethod} error for argument`, rpcArgs, err.message);
       }
     }
@@ -3750,6 +3755,7 @@ export class Connection {
       try {
         await this._rpcWebSocket.call(rpcMethod, [unsubscribeId]);
       } catch (err) {
+        // @ts-ignore
         console.error(`${rpcMethod} error:`, err.message);
       }
     }

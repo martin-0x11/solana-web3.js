@@ -26,12 +26,11 @@ export async function sendAndConfirmTransaction(
     preflightCommitment: options.preflightCommitment || options.commitment,
   };
 
-  await connection.sendTransaction(
+  const signature = await connection.sendTransaction(
     transaction,
     signers,
     sendOptions,
   );
-
   // const status = (
   //   await connection.confirmTransaction(
   //     signature,
@@ -45,5 +44,5 @@ export async function sendAndConfirmTransaction(
   //   );
   // }
 
-  return 'ok';
+  return signature;
 }
