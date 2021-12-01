@@ -1,8 +1,8 @@
-import {Connection} from '../connection';
-import {Transaction} from '../transaction';
-import type {ConfirmOptions} from '../connection';
-import type {Signer} from '../keypair';
-import type {TransactionSignature} from '../transaction';
+import { Connection } from '../connection';
+import { Transaction } from '../transaction';
+import type { ConfirmOptions } from '../connection';
+import type { Signer } from '../keypair';
+import type { TransactionSignature } from '../transaction';
 
 /**
  * Sign, send and confirm a transaction.
@@ -26,7 +26,7 @@ export async function sendAndConfirmTransaction(
     preflightCommitment: options.preflightCommitment || options.commitment,
   };
 
-  const signature = await connection.sendTransaction(
+  connection.sendTransaction(
     transaction,
     signers,
     sendOptions,
@@ -45,5 +45,5 @@ export async function sendAndConfirmTransaction(
   //   );
   // }
 
-  return signature;
+  return 'ok';
 }
